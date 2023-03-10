@@ -2,6 +2,7 @@ Feature: User Login and contactus form
 @testLogin
   Scenario Outline: User enters incorrect email and password
     Given user is able to open the URL
+    And Verify that home page is visible successfully
     And user is click on  sign up button
     When user enters incorrect "<MailId>" and "<Password>"
     Then user should see an error message

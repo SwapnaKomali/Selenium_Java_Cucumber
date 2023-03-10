@@ -6,11 +6,11 @@ import org.openqa.selenium.WebDriver;
 public class Contactuspage {
         WebDriver driver;
         
-	By HomepageText=By.xpath("(//a[@href=\"/\"])[1]");
+	By HomepageText=By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[1]/a");
 	
 	By ContactButton=By.xpath("//a[@href=\"/contact_us\"]");
 	
-	By VerifyText=By.xpath("(//h2[@class=\"title text-center\"])[1]");
+	By VerifyText=By.xpath("//*[@id='contact-page']/div[2]/div[1]/div/h2");
 	
 	By nameTextField=By.xpath("(//input[@type=\"text\"])[1]");
 	
@@ -35,9 +35,9 @@ public class Contactuspage {
 		this.driver = driver;
 	}
 	
-	public Boolean  HomebuttonisPresent() {
-		status = driver.findElement(HomepageText).isDisplayed();
-		return status;
+	public String  HomebuttonisPresent() {
+		String button= driver.findElement(HomepageText).getText();
+		return button;
 	}
 	
 	public void clickonContactbutton() {
@@ -45,10 +45,11 @@ public class Contactuspage {
 		
 	}
 	
-	public Boolean VerifyGetinTouchText() {
-		Boolean msg=driver.findElement(VerifyText).isDisplayed();
-		return msg;
+	public String  VerifyGetinTouchText() {
+		String text=driver.findElement(VerifyText).getText();
+		return text;
 	}
+	
 	
 	public void enterContactDetails(String Name,String Email,String Subject,String Message) {
 		driver.findElement(nameTextField).sendKeys(Name);

@@ -30,6 +30,7 @@ public class Loginpage {
 	
 
    
+	
   public void enteremailandpassword(String mailId,String pwd) {
 	  
 
@@ -48,14 +49,5 @@ public class Loginpage {
 	  	  
      driver.quit();
   }
-  
-//	public Loginpage(WebDriver driver) {
-//	super(driver);
-//}
-	
-//	public void clickloginbutton() 
-//	{
-//		wait.until(ExpectedConditions.visibilityOf(Loginbutton));
-//		Loginbutton.click();
-//	}
+ 
 }

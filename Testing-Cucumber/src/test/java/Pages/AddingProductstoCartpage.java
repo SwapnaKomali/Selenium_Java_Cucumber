@@ -18,27 +18,32 @@ public class AddingProductstoCartpage {
 	WebDriver driver;
 	
 	
+	
 
 	// By firstproduct=By.xpath("(//a[@data-product-id=\"1\"])[1]");
 	// By SecondProduct=By.xpath("(//a[@data-product-id=\"2\"])[1]");
 	
 	@FindBy(xpath="//*[@id='cartModal']/div/div/div[3]/button")
     WebElement Continuebutton;
+	
+	
 	By Cartbutton = By.xpath("//*[@id=\"cartModal\"]/div/div/div[2]/p[2]/a/u");
-
-	By CartProduct1 = By.xpath("//*[@id=\"product-1\"]/td[1]");
-	By CartProduct2 = By.xpath("//*[@id=\"product-2\"]/td[1]/a/img");
+	
 
 	@FindBy(xpath = "(//div[@class=\"productinfo text-center\"])[1]")
 	WebElement ImageFrame1;
-	@FindBy(xpath = "(//div[@class=\"productinfo text-center\"])[2]")
+	@FindBy(xpath = "(//div[@class=\"productinfo text-center\"])[3]")
 	WebElement ImageFrame2;
 
 	@FindBy(xpath = "(//a[@class=\"btn btn-default add-to-cart\"])[1]")
 	WebElement ClickOnAddcart1;
 	
-	@FindBy(xpath = "(//a[@class=\"btn btn-default add-to-cart\"])[2]")
+	@FindBy(xpath = "(//a[@class=\"btn btn-default add-to-cart\"])[3]")
 	WebElement ClickOnAddcart2;
+	
+	By CartProduct1 = By.xpath("//*[@id='product-1']/td[1]");
+	By CartProduct2 = By.xpath("//*[@id='product-2']/td[1]/a/img");
+	
 	boolean Status = false;
 	public WebDriverWait Wait;
 
@@ -67,7 +72,7 @@ public class AddingProductstoCartpage {
 	public void ClickContinuebtton() {
 		
 		//Wait.until(ExpectedConditions.visibilityOf(Continuebutton));
-		WebDriverWait wait = new WebDriverWait(driver,  Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(Continuebutton)); 
 		wait.until(ExpectedConditions.elementToBeClickable(Continuebutton));
 		Continuebutton.click();
@@ -75,31 +80,24 @@ public class AddingProductstoCartpage {
 	
 	
 	public void AddCart2() {
-		WebDriverWait wait = new WebDriverWait(driver,  Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(ImageFrame2)); 
-		
-		
-		Actions PA = new Actions(driver);
+	   Actions PA = new Actions(driver);
 		PA.moveToElement(ImageFrame2);
 		ClickOnAddcart2.click();
 	}
 
 
-//	 public void AddingFirstProduct() {
-//		 driver.findElement(firstproduct).click();
-//	 }
-
-
-//	 public void AddingSecondProduct() {
-//		 driver.findElement(SecondProduct).click();
-//	 }
 	public void ViewCartButton() {
-		driver.findElement(Cartbutton).click();
+		WebElement ele=new WebDriverWait(driver,Duration.ofSeconds(10))
+				.until(ExpectedConditions.elementToBeClickable(Cartbutton));
+					ele.click();
 
 	}
 
 	public boolean VerifyCartproducts() {
-		if (driver.findElement(CartProduct1).isDisplayed() && driver.findElement(CartProduct2).isDisplayed()) {
+		
+		if (driver.findElement(CartProduct1).isEnabled() && driver.findElement(CartProduct2).isEnabled()) {
 			Status = true;
 		}
 		return Status;

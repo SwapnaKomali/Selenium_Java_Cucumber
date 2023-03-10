@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ScrolingFuntionalitypage {
 	WebDriver driver;
 	
+	
 		
 	By Subscription=By.xpath("//*[@id=\"footer\"]/div[1]/div/div/div[2]/div/h2");
 	
@@ -22,6 +23,7 @@ public class ScrolingFuntionalitypage {
 		this.driver = driver;
 	}
 	
+	
 	public void Scrolldown() {
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 //		js.executeScript("arguments[0].scrollIntoView()",Subscription );
@@ -30,10 +32,10 @@ public class ScrolingFuntionalitypage {
 		
 	}
 	
-	public boolean subscriptionTextisDisplayed() {
+	public String subscriptionTextisDisplayed() {
 		//wait.until(ExpectedConditions.visibilityOf());
-		Status=driver.findElement(Subscription).isDisplayed();
-		return Status;
+		String Text=driver.findElement(Subscription).getText();
+		return Text;
 	
 	}
 	
@@ -44,7 +46,7 @@ public class ScrolingFuntionalitypage {
 	    js1.executeScript("window.scrollBy(0,-10000)", "");
 		
       }
-	public boolean VerifyText() {
-		Status=driver.findElement(TextField).isDisplayed();
-		return Status;
+	public String VerifyMaintext() {
+		String VT=driver.findElement(TextField).getText();
+		return VT;
 	}}

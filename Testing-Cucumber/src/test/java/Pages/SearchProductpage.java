@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class SearchProductpage {
 
 	WebDriver driver;
+	
 	By Productbutton=By.xpath("//a[@href=\"/products\"]");
 	
 	By AllproductsText=By.xpath("//h2[@class=\"title text-center\"]");
@@ -14,9 +15,9 @@ public class SearchProductpage {
 	
 	By SearchSymbol=By.xpath("//i[@class=\"fa fa-search\"]");
 	
-	By SearchedproductsText=By.xpath("//h2[@class=\"title text-center\"]");
+	By SearchedproductsText=By.xpath("//h2[@class='title text-center']");
 	
-	By MatchwithSearchedProduct=By.xpath("(//p[text()=\"Blue Top\"])[1]");
+	By MatchwithSearchedProduct=By.xpath("(//p[text()='Blue Top'])[1]");
 	
 	boolean Status=false;
 	
@@ -44,12 +45,12 @@ public class SearchProductpage {
 		driver.findElement(SearchSymbol).click();
 	}
 	
-	public boolean SearchedTextField() {
-		Status =driver.findElement(SearchedproductsText).isDisplayed();
-		return Status;
+	public String validateSearchedproductText() {
+		String product =driver.findElement(SearchedproductsText).getText();
+		return product;
 	}
 	
-	public String verifySearchedProduct() {
+	public String validateSearchedProduct() {
 		String Value =driver.findElement(MatchwithSearchedProduct).getText();
 		return Value;
 	}

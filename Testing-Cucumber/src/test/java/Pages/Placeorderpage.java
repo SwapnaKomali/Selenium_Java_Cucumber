@@ -1,11 +1,11 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class Placeorderpage {
 	WebDriver driver;
-	
 	
 	//forDescription and place order
 	By descriptionText=By.xpath("//*[@id=\"ordermsg\"]/textarea");
@@ -55,12 +55,15 @@ public class Placeorderpage {
 	}
 	
 	public void ClickonpayandPlaceOrder() {
-		driver.findElement(placeOrderbutton).click();
+		 JavascriptExecutor js = (JavascriptExecutor) driver;
+	 	    js.executeScript("window.scrollBy(0,400)", "");
+		driver.findElement(Paybutton).click();
 	}
 	
-	public boolean VerifySuccessmesg() {
-		Status=driver.findElement(SuccessMesg).isDisplayed();
-		return Status;
+	
+	public String  VerifySuccessmesg() {
+		String mesg=driver.findElement(SuccessMesg).getText();
+		return mesg;
 	}
 	
 	
